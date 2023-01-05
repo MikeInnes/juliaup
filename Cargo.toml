@@ -1,6 +1,9 @@
 [package]
 name = "juliaup"
 version = "1.8.16"
+description = "Julia installer and version multiplexer"
+license = "MIT"
+authors = ["David Anthoff"]
 edition = "2021"
 default-run = "juliaup"
 publish = false
@@ -84,3 +87,11 @@ winappinstallermsix = { file = "deploy/msix/PackagingLayout.xml", variables = [{
 
 [package.metadata.winappinstaller]
 winappinstaller = "deploy/winappinstaller/Julia.appinstaller"
+
+[package.metadata.deb]
+name = "julia"
+assets = [
+    ["target/release/juliaup", "usr/bin/", "755"],
+    ["target/release/julialauncher", "usr/bin/julia", "755"],
+    ["README.md", "usr/share/doc/julia/README", "644"],
+]
